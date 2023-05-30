@@ -6,43 +6,35 @@ public class vetoresExc2 {
 	public static void main(String[] args) {
 
 
-        int[] vetor = new int[10];
+		double[][] notas = new double[10][4];
+        double[] medias = new double[10];
         Scanner scanner = new Scanner(System.in);
 
-        // Leitura dos números e armazenamento no vetor
-        for (int i = 0; i < vetor.length; i++) {
-            System.out.print("Digite o número " + (i + 1) + ": ");
-            vetor[i] = scanner.nextInt();
-        }
-
-        System.out.println("Elementos dos índices ímpares do vetor:");
-        for (int i = 1; i < vetor.length; i += 2) {
-            System.out.println("Índice " + i + ": " + vetor[i]);
-        }
-
-        System.out.println("Elementos pares do vetor:");
-        for (int i = 0; i < vetor.length; i++) {
-            if (vetor[i] % 2 == 0) {
-                System.out.println(vetor[i]);
+        // Leitura das notas dos participantes
+        for (int i = 0; i < notas.length; i++) {
+            System.out.println("Digite as notas do participante " + (i + 1) + ":");
+            for (int j = 0; j < notas[i].length; j++) {
+                System.out.print("Nota do bimestre " + (j + 1) + ": ");
+                notas[i][j] = scanner.nextDouble();
             }
+            System.out.println();
         }
 
-        int soma = 0;
-        for (int i = 0; i < vetor.length; i++) {
-            soma += vetor[i];
+        // Cálculo das médias dos participantes
+        for (int i = 0; i < notas.length; i++) {
+            double soma = 0;
+            for (int j = 0; j < notas[i].length; j++) {
+                soma += notas[i][j];
+            }
+            medias[i] = soma / notas[i].length;
         }
 
-        double media = (double) soma / vetor.length;
-
-        System.out.println("Soma dos elementos do vetor: " + soma);
-        System.out.println("Média dos elementos do vetor: " + media);
+        // Exibição das médias dos participantes
+        System.out.println("Médias dos participantes:");
+        for (int i = 0; i < medias.length; i++) {
+            System.out.println("Participante " + (i + 1) + ": " + medias[i]);
+        }
 
         scanner.close();
     }
-
-
-
-
-
-    }
-
+}
